@@ -1,0 +1,7 @@
+# Request fields
+int8       interaction_id
+Trajectory observed_trajectory
+float32[]  covariance
+---
+# Response fields
+float32 mse

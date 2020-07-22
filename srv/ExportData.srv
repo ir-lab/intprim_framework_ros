@@ -1,0 +1,6 @@
+# Request fields
+int8   interaction_id
+string file_name
+---
+# Response fields
+bool success

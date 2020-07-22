@@ -1,0 +1,7 @@
+# Request fields
+int8       interaction_id
+---
+# Response fields
+Trajectory mean_trajectory
+Trajectory upper_std_dev
+Trajectory lower_std_dev

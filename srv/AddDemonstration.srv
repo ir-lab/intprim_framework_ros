@@ -1,0 +1,6 @@
+# Request fields
+int8       interaction_id
+Trajectory observed_trajectory
+---
+# Response fields
+bool success

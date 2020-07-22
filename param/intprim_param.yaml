@@ -1,0 +1,163 @@
+bip:
+-   id: 0
+    name: "SimpleExample"
+    modalities:
+    -   name: "x_pos"
+        indices: [0, 1]
+        dof_names: [
+            "x position"
+        ]
+        basis_model:
+            type: "Gaussian"
+            degree: 7
+            scale: 0.04
+            start_phase: 0.0
+            end_phase: 1.0
+        scaling_groups : [
+            0
+        ]
+        noise_bias: 0.0 # Added to the measurement noise for each DoF of this modality.
+        generate: false
+        active: true
+        active_from: 0.0 # Each DoF will only be active when the estimated phase is between from/until. When inactive, it will not be perturbed by noise and the measurement noise will be increased.
+        active_until: 1.01
+    #--------------------------------------------------------------------------
+    -   name: "y_pos"
+        indices: [1, 2]
+        dof_names: [
+            "y position"
+        ]
+        basis_model:
+            type: "Gaussian"
+            degree: 7
+            scale: 0.04
+            start_phase: 0.0
+            end_phase: 1.0
+        scaling_groups : [
+            0
+        ]
+        noise_bias: 0.0 # Added to the measurement noise for each DoF of this modality.
+        generate: true
+        active: true
+        active_from: 0.0 # Each DoF will only be active when the estimated phase is between from/until. When inactive, it will not be perturbed by noise and the measurement noise will be increased.
+        active_until: 1.01
+    #--------------------------------------------------------------------------
+    filter:
+        name: "enkf"
+        ensemble_size: 100 # Max number of demonstrations!
+        initial_phase: 0.0
+        initial_phase_variance: 0.01
+        initial_phase_velocity: 0.003
+        initial_phase_velocity_variance: 5e-07
+        initial_phase_acceleration: 0.0001
+        initial_phase_acceleration_variance: 4.012610510198e-10
+        process_variance: 1e-7
+        time_delta: 1.0
+        measurement_noise_bias: 10000.0
+        system_order: 1
+    prior:
+        init_with_demonstrations: true # If this is true, the ensemble_size is upper bounded by the number of demonstrations available.
+        reg_covar: 1e-6
+        num_components: 1
+    num_samples: 40
+    phase_lookahead: 0.00
+    scale_observations: false # Perform basis standardization
+    cyclical: false # If true, the phase will roll back to 0 once it is >= 1.
+    debug: false
+    import_data: "<path>/trained_bip.bip"
+    observation_noise: "<path>/observation_noise.noise"
+    mip_test_directory: "<path_to_csvs>"
+    debug_directory: "<path>/debug"
+    config_name: "Config1"
+    primary: false
+-   id: 1
+    name: "CoppeliaSim"
+    modalities:
+    -   name: "ur5l"
+        indices: [0, 6]
+        dof_names: [
+            "UR5l Pos 1",
+            "UR5l Pos 2",
+            "UR5l Pos 3",
+            "UR5l Pos 4",
+            "UR5l Pos 5",
+            "UR5l Pos 6"
+        ]
+        basis_model:
+            type: "Gaussian"
+            degree: 7
+            scale: 0.07
+            start_phase: 0.0
+            end_phase: 1.0
+        scaling_groups : [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+        noise_bias: 0.0 # Added to the measurement noise for each DoF of this modality.
+        generate: false
+        active: true
+        active_from: 0.0 # Each DoF will only be active when the estimated phase is between from/until. When inactive, it will not be perturbed by noise and the measurement noise will be increased.
+        active_until: 1.01
+    #--------------------------------------------------------------------------
+    -   name: "ur5c"
+        indices: [6, 12]
+        dof_names: [
+            "UR5c Pos 1",
+            "UR5c Pos 2",
+            "UR5c Pos 3",
+            "UR5c Pos 4",
+            "UR5c Pos 5",
+            "UR5c Pos 6"
+        ]
+        basis_model:
+            type: "Gaussian"
+            degree: 7
+            scale: 0.07
+            start_phase: 0.0
+            end_phase: 1.0
+        scaling_groups : [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+        ]
+        noise_bias: 0.0 # Added to the measurement noise for each DoF of this modality.
+        generate: true
+        active: true
+        active_from: 0.0 # Each DoF will only be active when the estimated phase is between from/until. When inactive, it will not be perturbed by noise and the measurement noise will be increased.
+        active_until: 1.01
+    #--------------------------------------------------------------------------
+    filter:
+        name: "enkf"
+        ensemble_size: 100 # Max number of demonstrations!
+        initial_phase: 0.0
+        initial_phase_variance: 0.01
+        initial_phase_velocity: 0.003028400493295413
+        initial_phase_velocity_variance: 2.9307595907134784e-07
+        initial_phase_acceleration: 0.0001
+        initial_phase_acceleration_variance: 4.012610510198e-10
+        process_variance: 1e-7
+        time_delta: 1.0
+        measurement_noise_bias: 10000.0
+        system_order: 1
+    prior:
+        init_with_demonstrations: true # If this is true, the ensemble_size is upper bounded by the number of demonstrations available.
+        reg_covar: 1e-6
+        num_components: 1
+    num_samples: 40
+    phase_lookahead: 0.00
+    scale_observations: false # Perform basis standardization
+    cyclical: false # If true, the phase will roll back to 0 once it is >= 1.
+    debug: false
+    import_data: "<path_to_trained_model_dir>/trained_bip.bip"
+    observation_noise: "<path_to_observation_noise_dir>/observation_noise.noise"
+    mip_test_directory: "<path_to_recorded_rosbags_dir>"
+    debug_directory: "<path_to_debug_dir>"
+    config_name: "Config2"
+    primary: true

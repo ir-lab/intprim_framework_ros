@@ -1,0 +1,1 @@
+The csv files located in the csvs folder were used to train the model in this directory and observation noise corresponding to it. This model and observation noise are from the CoppeliaSim tutorial, so you are free to test it out and use it, instead of training a model manually.

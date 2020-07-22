@@ -1,0 +1,6 @@
+# Request fields
+int8       interaction_id
+---
+# Response fields
+float32[]  covariance
+uint32 stride

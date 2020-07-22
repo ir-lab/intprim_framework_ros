@@ -1,0 +1,9 @@
+# Request fields
+int8       interaction_id
+Trajectory observed_trajectory
+Trajectory target_states
+float32[]  covariance
+float32[]  target_covariance
+---
+# Response fields
+Trajectory generated_trajectory

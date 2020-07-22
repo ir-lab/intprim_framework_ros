@@ -1,0 +1,22 @@
+experiments:
+-   id: 0
+    name: "Simple Experiment"
+    timeout: 10 # In seconds
+    sub_actions:
+    -   prefix: "trajectory"
+        message: "Prepare to execute arbitrary trajectory..."
+    devices:
+    -   "x"
+    -   "y"
+    controller: "y" # "none"
+    error: "none"
+-   id: 1
+    name: "CoppeliaSim"
+    timeout: 60 # In seconds
+    sub_actions:
+    -   prefix: "coppelia"
+        message: "UR5's will touch a random point in between them..."
+    devices:
+    -   "ur5l" # lead
+    -   "ur5c" # control
+    controller: "ur5c" # "none"

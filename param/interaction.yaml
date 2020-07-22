@@ -1,0 +1,26 @@
+interaction:
+    observation_frequency: 100.0
+    max_observation_length: 800
+    min_observation_length: 1
+    response_frequency: 30.0
+    single_point_trajectory: # Whether to only generate a trajectory consisting of a single point at the given phase.
+        use: false
+        phase: "current" # This can either be a floating point value indicating a specific phase to generate at, or "current" to use the currently estimated phase.
+    start_generation_phase: 0.07 # Start generating trajectories if estimated phase exceeds this value.
+    stop_generation_phase: 1.1 # Stop generating trajectories if estimated phase exceeds this value.
+    playback_factor: 1.0
+    default_record_dir: "<path_to_recorded_data_dir>"
+    default_playback_dir: "<path_to_rosbags_dir>"
+    demo_status_topic: "/interaction_demo_status"
+    demo_reset_topic: "/interaction_demo_reset"
+    reset_after_demo: true
+    rosbag_record_delay_ms: 700
+control:
+    control_topic: "/continuous_controller"
+    ur5l:
+        control_frequency: 30
+        joint_distance_threshold: 0.13
+    ur5c:
+        control_frequency: 30
+        joint_distance_threshold: 0.13
+    controller: "ur5c" # Only used if robot controller is launched as an independent node.

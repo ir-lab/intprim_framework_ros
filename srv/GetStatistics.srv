@@ -1,0 +1,6 @@
+# Request fields
+int8   interaction_id
+string bag_file
+---
+# Response fields
+Statistics stats

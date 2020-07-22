@@ -1,0 +1,6 @@
+/*!
+@mainpage IntPrim Framework ROS
+
+This is the API and code documentation for the IntPrim Framework ROS library.
+This library consists of Python and C++ source code, both of which have been commented via Doxygen.
+*/

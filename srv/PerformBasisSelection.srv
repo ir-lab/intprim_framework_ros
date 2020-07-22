@@ -1,0 +1,5 @@
+# Request fields
+int8       interaction_id
+---
+# Response fields
+bool success

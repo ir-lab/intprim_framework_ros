@@ -1,0 +1,5 @@
+# Request fields
+int8       interaction_id
+---
+# Response fields
+uint32 num_components

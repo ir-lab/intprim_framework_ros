@@ -1,0 +1,1 @@
+The csv files located in the csvs folder were used to train the model in this directory and observation noise corresponding to it. This model and observation noise are for the handwritten minimal tutorial.
